@@ -1,0 +1,219 @@
+/* ============================================
+   MAILBOX LIST - 3D TRANSFORM CARDS
+   ============================================ */
+
+.mailbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  perspective: 1000px;
+}
+
+.mail-box {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Glassmorphism */
+  background: linear-gradient(135deg, 
+    rgba(0, 245, 255, 0.05), 
+    rgba(255, 0, 255, 0.05));
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--glass-border);
+  border-radius: 20px;
+  
+  /* Typography */
+  font-size: 3rem;
+  font-weight: 900;
+  text-decoration: none;
+  color: var(--text-glow);
+  
+  /* 3D & Animation */
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  
+  /* Enhanced touch target for mobile */
+  min-height: 44px;
+  min-width: 44px;
+  
+  /* Shadow */
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(0, 245, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Animated border gradient */
+.mail-box::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, 
+    var(--primary-glow), 
+    var(--secondary-glow), 
+    var(--accent-glow), 
+    var(--primary-glow));
+  background-size: 300% 300%;
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s;
+  animation: borderRotate 4s linear infinite;
+}
+
+@keyframes borderRotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.mail-box:hover::before {
+  opacity: 1;
+}
+
+/* 3D lift effect */
+.mail-box:hover {
+  transform: translateY(-15px) rotateX(5deg) scale(1.05);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(0, 245, 255, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: var(--primary-glow);
+}
+
+/* Shine effect on hover */
+.mail-box::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: all 0.6s;
+}
+
+.mail-box:hover::after {
+  left: 100%;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MAILBOX LIST SPECIFIC
+   ============================================ */
+
+/* Tablet and small desktop */
+@media (max-width: 1024px) {
+  .mailbox-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+/* Mobile and tablet */
+@media (max-width: 768px) {
+  /* Better mobile grid */
+  .mailbox-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1rem;
+  }
+  
+  .mail-box {
+    font-size: 2rem;
+    padding: 1rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .mailbox-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 0.8rem;
+  }
+  
+  .mail-box {
+    font-size: 1.5rem;
+  }
+  
+  /* Disable some animations on very small screens for performance */
+  .mail-box:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+/* Large screens - enhance the experience */
+@media (min-width: 1440px) {
+  .mailbox-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 2.5rem;
+  }
+  
+  .mail-box {
+    font-size: 3.5rem;
+  }
+}
+
+/* Quick Action Button */
+.action-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 3rem;
+}
+
+.quick-action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background: rgba(57, 255, 20, 0.15);
+  border: 1px solid var(--accent-glow);
+  border-radius: 50px;
+  color: var(--accent-glow);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.quick-action-button:hover {
+  background: rgba(57, 255, 20, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+}
+
+.quick-action-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent);
+  transition: left 0.5s;
+}
+
+.quick-action-button:hover:before {
+  left: 100%;
+}
+
+@media (max-width: 768px) {
+  .action-container {
+    justify-content: center;
+  }
+}

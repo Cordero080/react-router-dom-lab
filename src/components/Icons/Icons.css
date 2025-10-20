@@ -1,0 +1,60 @@
+/* SVG Icon Styling */
+.feature-svg-icon {
+  width: 48px;
+  height: 48px;
+  stroke: var(--primary-glow);
+  filter: drop-shadow(0 0 8px rgba(0, 245, 255, 0.5));
+  transition: all 0.3s ease;
+}
+
+/* Different color effects for each icon */
+.feature-card:nth-child(1) .feature-svg-icon {
+  stroke: #00d2ff;
+}
+
+.feature-card:nth-child(2) .feature-svg-icon {
+  stroke: #ff00ff;
+}
+
+.feature-card:nth-child(3) .feature-svg-icon {
+  stroke: #39ff14;
+}
+
+/* Animation for icons */
+.feature-card:hover .feature-svg-icon {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 12px rgba(0, 245, 255, 0.7));
+}
+
+/* Unique animations for each icon on hover */
+.feature-card:nth-child(1):hover .feature-svg-icon {
+  animation: pulse-storage 2s infinite alternate;
+  filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.7));
+}
+
+.feature-card:nth-child(2):hover .feature-svg-icon {
+  animation: pulse-delivery 1.5s infinite alternate;
+  filter: drop-shadow(0 0 12px rgba(255, 0, 255, 0.7));
+}
+
+.feature-card:nth-child(3):hover .feature-svg-icon {
+  animation: pulse-security 2.5s infinite alternate;
+  filter: drop-shadow(0 0 12px rgba(57, 255, 20, 0.7));
+}
+
+@keyframes pulse-storage {
+  0% { stroke-width: 1.5; opacity: 0.8; }
+  100% { stroke-width: 2; opacity: 1; }
+}
+
+@keyframes pulse-delivery {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1) translateX(2px); opacity: 1; }
+  100% { transform: scale(1.05) translateX(-2px); opacity: 0.9; }
+}
+
+@keyframes pulse-security {
+  0% { transform: rotate(0deg); opacity: 0.8; }
+  50% { transform: rotate(5deg); opacity: 1; }
+  100% { transform: rotate(-5deg); opacity: 0.9; }
+}

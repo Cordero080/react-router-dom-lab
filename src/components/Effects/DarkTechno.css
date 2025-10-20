@@ -1,0 +1,227 @@
+/* ============================================
+   DARK TECHNO NOIR EFFECTS
+   ============================================ */
+
+/* Update color variables for a darker noir feel */
+:root {
+  --noir-dark: rgba(2, 6, 15, 0.85);
+  --noir-accent: rgba(11, 22, 42, 0.6);
+  --noir-highlight: rgba(0, 245, 255, 0.06);
+  --grid-color: rgba(0, 245, 255, 0.08);
+  --data-line-color: rgba(0, 245, 255, 0.1);
+  --data-glow: rgba(0, 245, 255, 0.03);
+  --glitch-color-1: rgba(255, 0, 128, 0.5);
+  --glitch-color-2: rgba(0, 255, 255, 0.5);
+}
+
+/* Digital Grid Overlay */
+.digital-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: -5;
+  animation: gridFade 10s infinite alternate;
+}
+
+@keyframes gridFade {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.25; }
+}
+
+/* Dark Vignette Effect */
+.noir-vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    rgba(2, 6, 15, 0.4) 70%, 
+    rgba(2, 6, 15, 0.7) 100%
+  );
+  pointer-events: none;
+  z-index: -4;
+}
+
+/* Circuit Pattern */
+.circuit-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  background-image: 
+    linear-gradient(to right, var(--data-line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--data-line-color) 1px, transparent 1px),
+    radial-gradient(circle at 50px 50px, var(--data-line-color) 2px, transparent 2px),
+    radial-gradient(circle at 150px 150px, var(--data-line-color) 2px, transparent 2px),
+    radial-gradient(circle at 250px 250px, var(--data-line-color) 2px, transparent 2px),
+    radial-gradient(circle at 350px 350px, var(--data-line-color) 2px, transparent 2px);
+  background-size: 100px 100px, 100px 100px, 200px 200px, 200px 200px, 200px 200px, 200px 200px;
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: -3;
+  animation: circuitPulse 15s infinite linear;
+}
+
+@keyframes circuitPulse {
+  0% { opacity: 0.03; }
+  50% { opacity: 0.06; }
+  100% { opacity: 0.03; }
+}
+
+/* Data Stream Lines */
+.data-lines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.data-line {
+  position: absolute;
+  background: var(--data-line-color);
+  opacity: 0;
+  box-shadow: 0 0 10px var(--data-glow);
+}
+
+.data-line.vertical {
+  width: 1px;
+  height: 100%;
+  top: 0;
+  animation: dataStreamVertical 15s infinite linear;
+}
+
+.data-line.horizontal {
+  height: 1px;
+  width: 100%;
+  left: 0;
+  animation: dataStreamHorizontal 15s infinite linear;
+}
+
+@keyframes dataStreamVertical {
+  0% {
+    opacity: 0;
+    transform: translateX(-100vw);
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(200vw);
+  }
+}
+
+@keyframes dataStreamHorizontal {
+  0% {
+    opacity: 0;
+    transform: translateY(-100vh);
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(200vh);
+  }
+}
+
+/* Noir Overlay for darker feel */
+.noir-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    var(--noir-dark) 0%, 
+    var(--noir-accent) 50%, 
+    var(--noir-dark) 100%);
+  mix-blend-mode: multiply;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Digital Noise */
+.digital-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAABNJJREFUaEPtmutx3DAMhEmVkA7STlJJUknaSSrJdJBKnApSyWUG5nxaCJK4xz3ODeLMeX/WgvgegFjy5uXp6+vHQf9ubm5SY56fn3N9bm9vy+uvr6/LM/uWZ9F3+V3qk8ay/Vr+D7/MOnx8fCz9mL2XcbNnbN/8jvol94dxHx8fMZ7XoL5r3l+pF4M8PT0tj25vb5dF82LC9ZeXl7KGEza/wIf8j3HZlnNyE+/u7srz+/v78vvy8lLWw2Y4Ds+YwAiDPD4+lg6MFtGmCStYGrKOvAN9wX0QF+tgu57IoC0Wkh1hEIYiYa6Rpqg/vr+/L/qb0TVSixqdLvyuxCAMxdprx7HGaXY9TQ1J3d7KvDCIVByvTp0Ag+zykdfX1wJnxmxlejoAg5yvGtTYyZj0ja0vVIJBKCWXJRJbj6vKyxIuBnnAyFr6xWNEwVI8+XNLe6TFm1ARdboR6nRVSr0apsEgVFcqXWYQaE4WBNcEL0y3dN5qXCXVFQzCXmCaEpcBq3BMFUVr3lflLR7lKf9FxY1pYxBJUy60rqGZM+2wBDGIMlVrLoTMONdxgJRCZ+2TjJ27J2APIJ+nZmY+i1IIgyjr5eiH1FPpSh5Mtj5MpQaxJrBlWcbzFQzCxdlTIDVxikFUNhiJRWmg5pmwptXyYmhzFYNE9YfdHsuV+RaMDAFraXB4B5eoW7TWeAhmn2pX2c5s9C6ZUa8wCDauZ13G60aNR3qpRZUuzpaUtMPMLNV5GAQaUCmHNDAi9XbuAjWI2smRVcjSCCfZsM6AxSCU1pIXNpKV9U4HRvfafKxKIwyC1ZEDOmeULL8BE6MRCIMgYPcY69y9LtqbPtfwTL4VGIRBmFZnJ2eyQemrq8qoNqdAdPQXubdhEKqYUxCnJDAdQnprPS6FQZyLVfWnmoQ1LQzilBei2SJ3PWrZY48tMQgTCmeBztVmLGqvfVimQCNk1w3ilF/l0bNVoW0dZVqjftJL7Z3pDYNQh5X6jETbdjh5Gu2Ez+ntNbyFAoPAG0dJBdrgLkFVdBj1cUboTMmaPhtnnO9iECZCyogZN3DGS96KoDOzi5FwMLgGpnH++YdBuCs31rIbvFIw48Xi/FwrBKYcYbaaT+TMGRqVd7o2jUFIOI+sku45zJDrqKpkBxg5MIchq3jpjA+tfQrLVr+8dtVVUfWhQSCdWaNiIiUrdItXncdRzir5VaI7rqUkNNhVOUtruH2pQSjbpVFXKZ0lfcdGq8Jkp3U9wEG4DZey1zqR9bJ7ET5fqdkaUUdtHzlylmk5oGGtzh7BWWZ/WG8yaxBMmJ0hUSB0nLy1qwxc84RaJLhBuFiWj7PGNmN4o9khSilObvZBTje2Ie0sDkJZlPnKVUzr6H2EfST3klFjwLM7muEgmA50mKk+H3q0jiiNNcr3TtE6m90gTvKC0xucqfXIylZcDjhdxScmy9O1KjBZpaobBBdBZVQ0rjSXk1ktzbjuYa0T0S1uRV4gDlECIvKoedlRWGmXzaBFJW84V3F26HoPd+9qs+jL3hus6iWqD+Qg2OAolbDUcNR+dbTA7SKrUvmjWklEBbwdUeLBDcIT9cxbuYc3uZH06B3Haz/sTFYxiHOVYi9p4joozkWP0O7ovuFopfpkBqFkPvrirCvX6ee/TjnQR/BMYT4AAAAASUVORK5CYII=');
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Glitch Effect */
+.glitch-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 999;
+  animation: glitchAnimation 500ms steps(2, end) forwards;
+}
+
+@keyframes glitchAnimation {
+  0% {
+    background: transparent;
+    transform: translateX(0);
+  }
+  25% {
+    background: var(--glitch-color-1);
+    transform: translateX(5px);
+  }
+  50% {
+    background: transparent;
+    transform: translateX(-5px);
+  }
+  75% {
+    background: var(--glitch-color-2);
+    transform: translateX(2px);
+  }
+  100% {
+    background: transparent;
+    transform: translateX(0);
+  }
+}
+
+/* Make sure our effects are positioned correctly on all screen sizes */
+@media (max-width: 768px) {
+  .digital-grid {
+    background-size: 30px 30px;
+  }
+  
+  .circuit-pattern {
+    background-size: 80px 80px, 80px 80px, 160px 160px, 160px 160px, 160px 160px, 160px 160px;
+  }
+}

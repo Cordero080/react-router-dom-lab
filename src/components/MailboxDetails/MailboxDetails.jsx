@@ -1,7 +1,10 @@
-// PSEUDOCODE: Import useParams to extract URL parameters
-import { useParams } from 'react-router-dom';
+// Import useParams to extract URL parameters
+import { useParams, Link } from 'react-router-dom';
+import './MailboxDetails.css';
+import '../Effects/AdvancedEffects.css';
+import ScrambleButton from '../ScrambleButton/ScrambleButton';
 
-// PSEUDOCODE: Accept mailboxes array as a prop from App.jsx
+// Accept mailboxes array as a prop from App.jsx
 
 export default function MailboxDetails({mailboxes}) {
 
@@ -17,19 +20,50 @@ const selectedBox = mailboxes.find(
 );
   
 return (
-  <main>
-    <Link to="/mailboxes"> Back to Mailboxes"</Link>
-    <h2>Mailbox Details</h2>
+  <main className="hologram">
+    <Link to="/mailboxes" className="back-link electric-border">
+      <span className="back-icon">⬅</span> Return to Mailboxes
+    </Link>
+    
+    <h2 className="glitch-text">Mailbox Quantum Profile</h2>
 
-    {/* If not found, show error. Otherwise, show details */}
-    {!selectedBox ?(
-      <p>Mailbox Not Found!</p>
+    {/* Enhanced error/details display with advanced effects */}
+    {!selectedBox ? (
+      <div className="error-container">
+        <p className="terminal-text">ERROR: Mailbox ID #{mailboxId} not found in quantum database.</p>
+        <p className="error-suggestion">Please verify the mailbox identification number and try again.</p>
+      </div>
     ) : ( 
-      <ul>
-    <li><strong>Box Number:</strong>{selectedBox._id}</li>
-    <li><strong>Owner:</strong>{selectedBox.boxOwner}</li>
-    <li><strong>Size:</strong>{selectedBox.boxSize}</li>
-    </ul>
+      <div className="details-container card-3d">
+        <div className="details-header">
+          <div className="box-number shimmer">{selectedBox._id}</div>
+          <div className="box-status">Status: Active</div>
+        </div>
+        
+        <ul className="details-list">
+          <li className="detail-item">
+            <strong>Box Number:</strong>
+            <span>{selectedBox._id}</span>
+          </li>
+          <li className="detail-item">
+            <strong>Owner:</strong>
+            <span>{selectedBox.boxOwner}</span>
+          </li>
+          <li className="detail-item">
+            <strong>Size:</strong>
+            <span>{selectedBox.boxSize}</span>
+          </li>
+          <li className="detail-item">
+            <strong>Security Level:</strong>
+            <span>Quantum Encrypted</span>
+          </li>
+        </ul>
+        
+        <div className="action-row">
+          <ScrambleButton variant="primary">Send Message</ScrambleButton>
+          <ScrambleButton variant="secondary">Manage Access</ScrambleButton>
+        </div>
+      </div>
     )}
   </main>
 );

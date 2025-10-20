@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MailboxForm.css';
+import '../Effects/AdvancedEffects.css';
+import ScrambleButton from '../ScrambleButton/ScrambleButton';
 
 //MailboxForm component that accepts addBox function as a prop from App.jsx
 export default function MailboxForm({addBox}) {
@@ -32,42 +34,53 @@ const navigate = useNavigate();
     navigate('/mailboxes');
 }
 return (
-<main>
-   {/* Display heading for the page */}
-   <h2>New Mailbox</h2>
- {/* Create form element with handleSubmit attached to onSubmit event */}
- <form onSubmit={handleSubmit}>
-
- {/* Create label and input for Box Owner field */}
- <label>
-  Box Owner
-  {/*Text input controlled by boxOwner state */}
-          {/* value={boxOwner} displays current state */}
-          {/* onChange updates state when user types */}
-          <input
+  <main className="hologram">
+    {/* Enhanced heading with glitch effect */}
+    <h2 className="glitch-text">Register New Mailbox</h2>
+    
+    {/* Enhanced form with interactive effects */}
+    <form onSubmit={handleSubmit} className="focus-ring">
+      {/* Enhanced input field for Box Owner */}
+      <label>
+        Box Owner
+        <input
           type="text"
           value={boxOwner}
           onChange={(e) => setBoxOwner(e.target.value)}
-          placeholder="e.g., Megatron"/>
+          placeholder="e.g., Megatron"
+          className="focus-ring"
+          required
+        />
+      </label>
+      
+      {/* Enhanced select dropdown for Box Size */}
+      <label>
+        Box Size
+        <select 
+          value={boxSize} 
+          onChange={(e) => setBoxSize(e.target.value)}
+          className="focus-ring"
+        >
+          <option>Small</option>
+          <option>Medium</option>
+          <option>Large</option>
+          <option>Extra Large</option>
+        </select>
+      </label>
+      
+      {/* Security code field (just for visual enhancement) */}
+      <label>
+        Security Code
+        <input
+          type="password"
+          placeholder="Optional security code"
+          className="focus-ring"
+        />
+      </label>
 
- </label>
- Box Size
- {/* Create label and select dropdown for Box Size field */}
-{/* value={boxSize} displays current state */}
-          {/* onChange updates state when user selects an option */}
-<select value={boxSize} onChange={(e) => setBoxSize(e.target.value)}>
-
-  {/* Provide three size options: Small, Medium, Large */}
-  <option>Small</option>
-  <option>Medium</option>
-  <option>Large</option>
-</select>
-
-{/* Submit button triggers handleSubmit when clicked */}
-<button type="submit">Create Mailbox</button>
- </form>
-
-</main>
-
+      {/* Enhanced submit button with code scramble effect */}
+      <ScrambleButton type="submit" variant="accent">Initialize Mailbox</ScrambleButton>
+    </form>
+  </main>
 )
 }

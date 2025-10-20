@@ -55,6 +55,29 @@ input, select {
   font-family: inherit;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Scanning effect on input/select fields */
+input::before, select::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--primary-glow), transparent);
+  opacity: 0;
+  z-index: -1;
+  transform: translateX(-100%);
+}
+
+input:focus::before, select:focus::before {
+  opacity: 0.5;
+  transform: translateX(100vw);
+  transition: transform 1.5s linear;
 }
 
 input:focus, select:focus {
@@ -64,9 +87,26 @@ input:focus, select:focus {
     0 0 0 3px rgba(0, 245, 255, 0.1),
     0 0 20px rgba(0, 245, 255, 0.3);
   transform: translateY(-2px);
+  background: rgba(15, 23, 42, 0.9);
 }
 
-/* Futuristic Button */
+/* Custom select dropdown arrow */
+select {
+  appearance: none;
+  background-image: 
+    linear-gradient(45deg, transparent 50%, var(--primary-glow) 50%),
+    linear-gradient(135deg, var(--primary-glow) 50%, transparent 50%);
+  background-position: 
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px);
+  background-size: 
+    5px 5px,
+    5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 3rem;
+}
+
+/* Futuristic Button with 3D effect */
 button {
   padding: 1.25rem 3rem;
   background: linear-gradient(135deg, 
@@ -87,6 +127,27 @@ button {
   box-shadow: 
     0 10px 30px rgba(0, 245, 255, 0.3),
     0 0 20px rgba(0, 245, 255, 0.2);
+  transform-style: preserve-3d;
+  transform: perspective(1000px) translateZ(0);
+}
+
+/* Button glow effect */
+button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 245, 255, 0.3) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+  pointer-events: none;
 }
 
 button::before {
@@ -98,16 +159,23 @@ button::before {
   height: 100%;
   background: linear-gradient(90deg, 
     transparent, 
-    rgba(255, 255, 255, 0.3), 
+    rgba(255, 255, 255, 0.5), 
     transparent);
   transition: left 0.5s;
+  z-index: 1;
 }
 
 button:hover {
-  transform: translateY(-3px) scale(1.02);
+  transform: perspective(1000px) translateY(-3px) translateZ(10px) scale(1.02);
   box-shadow: 
     0 15px 40px rgba(0, 245, 255, 0.4),
-    0 0 30px rgba(0, 245, 255, 0.3);
+    0 0 30px rgba(0, 245, 255, 0.3),
+    0 5px 10px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+button:hover::after {
+  opacity: 1;
 }
 
 button:hover::before {
@@ -115,8 +183,32 @@ button:hover::before {
 }
 
 button:active {
-  transform: translateY(-1px) scale(0.98);
-  animation: glitch 0.3s ease-in-out;
+  transform: perspective(1000px) translateY(-1px) translateZ(0) scale(0.98);
+  animation: buttonGlitch 0.3s ease-in-out;
+}
+
+/* Button click effect */
+@keyframes buttonGlitch {
+  0%, 100% { 
+    transform: translate(0) scale(0.98);
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  20% { 
+    transform: translate(-2px, 2px) scale(0.98);
+    filter: hue-rotate(90deg) brightness(1.2);
+  }
+  40% { 
+    transform: translate(-2px, -2px) scale(0.98);
+    filter: hue-rotate(180deg) brightness(0.9);
+  }
+  60% { 
+    transform: translate(2px, 2px) scale(0.98);
+    filter: hue-rotate(270deg) brightness(1.2);
+  }
+  80% { 
+    transform: translate(2px, -2px) scale(0.98);
+    filter: hue-rotate(360deg) brightness(0.9);
+  }
 }
 
 /* Glitch effect for button interactions */

@@ -4,6 +4,9 @@ import MailboxDetails from './components/MailboxDetails/MailboxDetails';
 import MailboxForm from './components/MailboxForm/MailboxForm'
 import MailboxList from './components/MailboxList/MailboxList'
 import NavBar from './components/Navbar/NavBar';
+import Home from './components/Home/Home';
+import DarkTechnoEffects from './components/Effects/DarkTechnoEffects';
+import EffectsToggle from './components/Effects/EffectsToggle';
 
 import './App.css'
 
@@ -34,14 +37,11 @@ const App = () => {
   }
   return (
     <BrowserRouter>
+      <DarkTechnoEffects />
+      <EffectsToggle />
       <NavBar/>
       <Routes>
-<Route 
-path="/" 
-element=
-{<main>
-  <h1 className="typewriter">Post Office</h1>
-  </main>}/>
+<Route path="/" element={<Home />} />
 
 {/* Pass mailboxes array to the list */}
 <Route path="/new-mailbox" element={<MailboxForm addBox={addBox}/>}

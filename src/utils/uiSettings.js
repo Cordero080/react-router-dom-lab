@@ -1,0 +1,39 @@
+// Settings for UI effects and preferences
+const STORAGE_KEY = "mailbox-ui-preferences";
+
+// Default settings
+const defaultSettings = {
+  darkTechnoEnabled: true, // Enable by default so you can show it off initially
+};
+
+// Get current settings or set defaults
+export function getUISettings() {
+  try {
+    const storedSettings = localStorage.getItem(STORAGE_KEY);
+    return storedSettings
+      ? { ...defaultSettings, ...JSON.parse(storedSettings) }
+      : defaultSettings;
+  } catch (error) {
+    console.error("Error loading UI settings:", error);
+    return defaultSettings;
+  }
+}
+
+// Update a specific setting
+export function updateUISetting(key, value) {
+  try {
+    const currentSettings = getUISettings();
+    const newSettings = { ...currentSettings, [key]: value };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(newSettings));
+    return newSettings;
+  } catch (error) {
+    console.error("Error saving UI settings:", error);
+    return getUISettings();
+  }
+}
+
+// Toggle dark techno effects
+export function toggleDarkTechnoEffects() {
+  const settings = getUISettings();
+  return updateUISetting("darkTechnoEnabled", !settings.darkTechnoEnabled);
+}

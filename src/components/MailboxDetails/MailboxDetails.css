@@ -1,0 +1,196 @@
+/* ============================================
+   DETAILS PAGE STYLES
+   ============================================ */
+main ul {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+main li {
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  background: rgba(0, 245, 255, 0.03);
+  border-left: 4px solid var(--primary-glow);
+  border-radius: 0 12px 12px 0;
+  font-size: 1.1rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+main li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(180deg, 
+    var(--primary-glow), 
+    var(--secondary-glow));
+  box-shadow: 0 0 10px var(--primary-glow);
+}
+
+main li:hover {
+  background: rgba(0, 245, 255, 0.08);
+  transform: translateX(10px);
+  box-shadow: 0 5px 20px rgba(0, 245, 255, 0.2);
+}
+
+main li strong {
+  color: var(--primary-glow);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+/* Enhanced Back link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(0, 245, 255, 0.1);
+  border: 1px solid var(--primary-glow);
+  border-radius: 50px;
+  color: var(--primary-glow);
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.back-icon {
+  margin-right: 0.5rem;
+  font-size: 1.1em;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+}
+
+.back-link:hover {
+  background: rgba(0, 245, 255, 0.2);
+  transform: translateX(-5px);
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+}
+
+.back-link:hover .back-icon {
+  transform: translateX(-3px);
+}
+
+/* Details container */
+.details-container {
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid var(--glass-border);
+  margin-top: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease;
+}
+
+.details-container:hover {
+  border-color: var(--primary-glow);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3),
+              0 0 20px rgba(0, 245, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(0, 245, 255, 0.2);
+}
+
+.box-number {
+  font-family: 'Future Z', 'Orbitron', sans-serif;
+  font-size: 3rem;
+  color: var(--primary-glow);
+  text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+  position: relative;
+}
+
+.box-status {
+  background: rgba(57, 255, 20, 0.2);
+  color: var(--accent-glow);
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--accent-glow);
+  text-transform: uppercase;
+}
+
+/* Error styling */
+.error-container {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: rgba(255, 0, 255, 0.1);
+  border: 1px solid var(--secondary-glow);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.error-suggestion {
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+/* Action buttons */
+.action-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: flex-start;
+}
+
+.detail-action {
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, 
+    rgba(0, 245, 255, 0.2) 0%, 
+    rgba(0, 245, 255, 0.1) 100%);
+  color: var(--primary-glow);
+  border: 1px solid var(--primary-glow);
+}
+
+.detail-action:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 245, 255, 0.3);
+}
+
+.detail-action.secondary {
+  background: transparent;
+  border: 1px solid var(--primary-glow);
+  color: var(--primary-glow);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .details-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .action-row {
+    flex-direction: column;
+  }
+  
+  .detail-action {
+    width: 100%;
+  }
+}

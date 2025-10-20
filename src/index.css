@@ -1,10 +1,47 @@
 /* src/index.css */
+/* Global CSS reset and base styles */
 
-/* Removed all conflicting styles - App.css handles all styling */
-
-/* If you need any global resets, add them here */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Set smooth scrolling and better text rendering */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Set dark color scheme for browser UI elements */
+:root {
+  color-scheme: dark;
+}
+
+/* Scrollbar styling for WebKit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(2, 6, 15, 0.7);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 245, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 245, 255, 0.5);
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(0, 245, 255, 0.3);
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(0, 245, 255, 0.8);
 }
