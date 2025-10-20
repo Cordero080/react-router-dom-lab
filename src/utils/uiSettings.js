@@ -4,6 +4,7 @@ const STORAGE_KEY = "mailbox-ui-preferences";
 // Default settings
 const defaultSettings = {
   darkTechnoEnabled: true, // Enable by default so you can show it off initially
+  threeJsEnabled: true, // Enable Three.js effects by default
 };
 
 // Get current settings or set defaults
@@ -25,6 +26,14 @@ export function updateUISetting(key, value) {
     const currentSettings = getUISettings();
     const newSettings = { ...currentSettings, [key]: value };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(newSettings));
+
+    // If updating threeJsEnabled, dispatch the toggle event
+    if (key === "threeJsEnabled") {
+      window.dispatchEvent(
+        new CustomEvent("threeJsToggle", { detail: { enabled: value } })
+      );
+    }
+
     return newSettings;
   } catch (error) {
     console.error("Error saving UI settings:", error);
@@ -36,4 +45,9 @@ export function updateUISetting(key, value) {
 export function toggleDarkTechnoEffects() {
   const settings = getUISettings();
   return updateUISetting("darkTechnoEnabled", !settings.darkTechnoEnabled);
+}
+
+// Toggle Three.js effects
+export function toggleThreeJsEffects(enabled) {
+  return updateUISetting("threeJsEnabled", enabled);
 }

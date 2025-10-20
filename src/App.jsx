@@ -7,6 +7,8 @@ import NavBar from './components/Navbar/NavBar';
 import Home from './components/Home/Home';
 import DarkTechnoEffects from './components/Effects/DarkTechnoEffects';
 import EffectsToggle from './components/Effects/EffectsToggle';
+import ThreeBackground from './components/ThreeScene/ThreeBackground';
+import ThreeJsToggle from './components/ThreeScene/ThreeJsToggle';
 
 import './App.css'
 
@@ -39,6 +41,8 @@ const App = () => {
     <BrowserRouter>
       <DarkTechnoEffects />
       <EffectsToggle />
+      <ThreeBackground />
+      <ThreeJsToggle />
       <NavBar/>
       <Routes>
 <Route path="/" element={<Home />} />
