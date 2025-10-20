@@ -1,0 +1,55 @@
+.cyber-grid-toggle {
+  position: fixed;
+  bottom: 70px;
+  right: 20px; /* Position above the 3D toggle */
+  z-index: 1000;
+}
+
+.cyber-grid-toggle .toggle-button {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #ffffff;
+  opacity: 0.3;
+}
+
+.cyber-grid-toggle .toggle-button.active {
+  border-color: #00ff7f;
+  box-shadow: 0 0 10px rgba(0, 255, 127, 0.5);
+  opacity: 0.5;
+}
+
+.cyber-grid-toggle .toggle-button.inactive {
+  border-color: #ff00ff;
+  opacity: 0.3;
+}
+
+.cyber-grid-toggle .toggle-label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.cyber-grid-toggle .toggle-state {
+  font-size: 12px;
+}
+
+.cyber-grid-toggle .toggle-button.active .toggle-state {
+  color: #00ff7f;
+}
+
+.cyber-grid-toggle .toggle-button.inactive .toggle-state {
+  color: #ff00ff;
+}
+
+.cyber-grid-toggle .toggle-button:hover {
+  transform: scale(1.05);
+  opacity: 1;
+  box-shadow: 0 0 15px rgba(0, 255, 127, 0.7);
+}

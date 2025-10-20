@@ -5,10 +5,10 @@
   z-index: 1000;
 }
 
-.toggle-button {
+.three-js-toggle .toggle-button {
   display: flex;
   align-items: center;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.5);
   border: 1px solid;
   border-radius: 4px;
   padding: 8px 12px;
@@ -17,16 +17,18 @@
   cursor: pointer;
   transition: all 0.3s ease;
   color: #ffffff;
+  opacity: 0.3;
 }
 
-.toggle-button.active {
+.three-js-toggle .toggle-button.active {
   border-color: #00ffff;
-  box-shadow: 0 0 10px #00ffff;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  opacity: 0.5;
 }
 
-.toggle-button.inactive {
+.three-js-toggle .toggle-button.inactive {
   border-color: #ff00ff;
-  opacity: 0.7;
+  opacity: 0.3;
 }
 
 .toggle-label {
@@ -46,6 +48,8 @@
   color: #ff00ff;
 }
 
-.toggle-button:hover {
+.three-js-toggle .toggle-button:hover {
   transform: scale(1.05);
+  opacity: 1;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
 }

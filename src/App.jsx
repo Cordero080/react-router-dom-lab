@@ -9,6 +9,10 @@ import DarkTechnoEffects from './components/Effects/DarkTechnoEffects';
 import EffectsToggle from './components/Effects/EffectsToggle';
 import ThreeBackground from './components/ThreeScene/ThreeBackground';
 import ThreeJsToggle from './components/ThreeScene/ThreeJsToggle';
+import CyberGridToggle from './components/ThreeScene/CyberGridToggle';
+import PureGridBackground from './components/ThreeScene/PureGridBackground';
+import PureGridPage from './components/ThreeScene/PureGridPage';
+import GridPageToggle from './components/ThreeScene/GridPageToggle';
 
 import './App.css'
 
@@ -42,7 +46,10 @@ const App = () => {
       <DarkTechnoEffects />
       <EffectsToggle />
       <ThreeBackground />
+      <PureGridBackground />
       <ThreeJsToggle />
+      <CyberGridToggle />
+      <GridPageToggle />
       <NavBar/>
       <Routes>
 <Route path="/" element={<Home />} />
@@ -57,6 +64,7 @@ const App = () => {
 {/* Pass mailboxes array to details */}
 <Route path="/mailboxes/:mailboxId" element={<MailboxDetails mailboxes={mailboxes}/>}
 />
+<Route path="/grid-page" element={<PureGridPage />} />
       </Routes>
     </BrowserRouter>
   );

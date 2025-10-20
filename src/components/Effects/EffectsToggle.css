@@ -5,11 +5,11 @@
   z-index: 1000;
 }
 
-.toggle-button {
+.effects-toggle .toggle-button {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(5px);
   color: white;
@@ -23,9 +23,10 @@
   transition: all 0.3s ease;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 1001;
+  opacity: 0.3;
 }
 
-.toggle-button.enabled {
+.effects-toggle .toggle-button.enabled {
   border-color: var(--primary-glow);
   box-shadow: 0 0 15px rgba(0, 245, 255, 0.3);
   background: linear-gradient(
@@ -33,9 +34,10 @@
     rgba(0, 30, 60, 0.8) 0%,
     rgba(0, 20, 40, 0.9) 100%
   );
+  opacity: 0.5;
 }
 
-.toggle-button.disabled {
+.effects-toggle .toggle-button.disabled {
   background: linear-gradient(
     135deg,
     rgba(56, 65, 86, 0.9) 0%,
@@ -43,6 +45,7 @@
   );
   border-color: #4a546a;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  opacity: 0.3;
 }
 
 /* Make sure toggle is visible in both modes */
@@ -56,9 +59,10 @@ body.standard-mode .toggle-button.disabled {
   border-color: #5a6480;
 }
 
-.toggle-button:hover {
+.effects-toggle .toggle-button:hover {
   transform: scale(1.03); /* Subtler scale */
   filter: brightness(1.2); /* Slight brightness boost */
+  opacity: 1;
 }
 
 .toggle-icon {

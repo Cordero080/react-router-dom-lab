@@ -5,6 +5,8 @@ const STORAGE_KEY = "mailbox-ui-preferences";
 const defaultSettings = {
   darkTechnoEnabled: true, // Enable by default so you can show it off initially
   threeJsEnabled: true, // Enable Three.js effects by default
+  cyberGridEnabled: false, // Cyber grid is disabled by default
+  pureGridEnabled: false, // Pure grid is disabled by default
 };
 
 // Get current settings or set defaults
@@ -27,10 +29,18 @@ export function updateUISetting(key, value) {
     const newSettings = { ...currentSettings, [key]: value };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(newSettings));
 
-    // If updating threeJsEnabled, dispatch the toggle event
+    // Dispatch appropriate events based on the setting being updated
     if (key === "threeJsEnabled") {
       window.dispatchEvent(
         new CustomEvent("threeJsToggle", { detail: { enabled: value } })
+      );
+    } else if (key === "cyberGridEnabled") {
+      window.dispatchEvent(
+        new CustomEvent("cyberGridToggle", { detail: { enabled: value } })
+      );
+    } else if (key === "pureGridEnabled") {
+      window.dispatchEvent(
+        new CustomEvent("pureGridToggle", { detail: { enabled: value } })
       );
     }
 
