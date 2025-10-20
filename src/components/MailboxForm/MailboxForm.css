@@ -1,0 +1,188 @@
+/* ============================================
+   MAILBOX FORM - CYBERPUNK STYLES
+   ============================================ */
+
+/* Form Heading */
+h2 {
+  background: linear-gradient(135deg, 
+    var(--primary-glow), 
+    var(--secondary-glow), 
+    var(--accent-glow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Orbitron', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin: 0 0 2rem 0;
+  text-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
+  animation: textGlow 3s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+/* Form Container */
+form {
+  display: grid;
+  gap: 2rem;
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+/* Form Labels */
+label {
+  display: grid;
+  gap: 0.75rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary-glow);
+}
+
+/* Input and Select Fields */
+input, select {
+  padding: 1rem 1.5rem;
+  background: rgba(15, 23, 42, 0.8);
+  border: 2px solid var(--glass-border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--primary-glow);
+  box-shadow: 
+    0 0 0 3px rgba(0, 245, 255, 0.1),
+    0 0 20px rgba(0, 245, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Futuristic Button */
+button {
+  padding: 1.25rem 3rem;
+  background: linear-gradient(135deg, 
+    var(--primary-glow), 
+    var(--secondary-glow));
+  border: none;
+  border-radius: 50px;
+  color: #0a0e27;
+  font-family: 'Orbitron', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 10px 30px rgba(0, 245, 255, 0.3),
+    0 0 20px rgba(0, 245, 255, 0.2);
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent);
+  transition: left 0.5s;
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 15px 40px rgba(0, 245, 255, 0.4),
+    0 0 30px rgba(0, 245, 255, 0.3);
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:active {
+  transform: translateY(-1px) scale(0.98);
+  animation: glitch 0.3s ease-in-out;
+}
+
+/* Glitch effect for button interactions */
+@keyframes glitch {
+  0%, 100% { 
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  20% { 
+    transform: translate(-2px, 2px);
+    filter: hue-rotate(90deg);
+  }
+  40% { 
+    transform: translate(-2px, -2px);
+    filter: hue-rotate(180deg);
+  }
+  60% { 
+    transform: translate(2px, 2px);
+    filter: hue-rotate(270deg);
+  }
+  80% { 
+    transform: translate(2px, -2px);
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - FORM SPECIFIC
+   ============================================ */
+
+/* Mobile and tablet */
+@media (max-width: 768px) {
+  /* Mobile form improvements */
+  form {
+    max-width: 100%;
+    gap: 1.5rem;
+  }
+  
+  button {
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.6rem;
+  }
+  
+  form {
+    gap: 1.2rem;
+  }
+  
+  button {
+    padding: 0.9rem 1.8rem;
+    font-size: 0.85rem;
+  }
+  
+  input, select {
+    padding: 0.9rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}
