@@ -14,45 +14,11 @@ const DarkTechnoEffects = () => {
     return () => window.removeEventListener('darkTechnoToggle', handleToggle);
   }, []);
   
-  // Create dynamic data lines
+  // Data lines were removed to eliminate diagonal animations
   useEffect(() => {
-    if (!dataLinesRef.current || !effectsEnabled) {
-      if (dataLinesRef.current) dataLinesRef.current.innerHTML = '';
-      return;
+    if (dataLinesRef.current) {
+      dataLinesRef.current.innerHTML = '';
     }
-    
-    // Create vertical data lines
-    for (let i = 0; i < 10; i++) {
-      createDataLine('vertical', i * 2000);
-    }
-    
-    // Create horizontal data lines
-    for (let i = 0; i < 8; i++) {
-      createDataLine('horizontal', i * 2500);
-    }
-    
-    function createDataLine(direction, delay) {
-      const line = document.createElement('div');
-      line.className = `data-line ${direction}`;
-      
-      // Random position
-      if (direction === 'vertical') {
-        line.style.left = `${Math.random() * 100}%`;
-        line.style.animationDelay = `${delay}ms`;
-      } else {
-        line.style.top = `${Math.random() * 100}%`;
-        line.style.animationDelay = `${delay}ms`;
-      }
-      
-      dataLinesRef.current.appendChild(line);
-    }
-    
-    // Cleanup function
-    return () => {
-      if (dataLinesRef.current) {
-        dataLinesRef.current.innerHTML = '';
-      }
-    };
   }, []);
   
   // Random glitch effect
@@ -81,17 +47,11 @@ const DarkTechnoEffects = () => {
   
   return (
     <>
-      {/* Digital Grid */}
-      <div className="digital-grid"></div>
-      
       {/* Dark Noir Vignette */}
       <div className="noir-vignette"></div>
       
       {/* Circuit Pattern */}
       <div className="circuit-pattern"></div>
-      
-      {/* Data Lines */}
-      <div className="data-lines" ref={dataLinesRef}></div>
       
       {/* Noir Overlay */}
       <div className="noir-overlay"></div>
