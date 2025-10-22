@@ -1,11 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import './NavBar.css';
 
-// 2. Create the NavBar component
 export default function NavBar() {
-
-//3. Return JSX with nav and three links with active state
-return (
+  return (
   <nav>
     <NavLink 
       to="/" 

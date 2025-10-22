@@ -1,23 +1,15 @@
-// Import useParams to extract URL parameters
 import { useParams, Link } from 'react-router-dom';
 import './MailboxDetails.css';
 import '../Effects/AdvancedEffects.css';
 import ScrambleButton from '../ScrambleButton/ScrambleButton';
 
-// Accept mailboxes array as a prop from App.jsx
-
 export default function MailboxDetails({mailboxes}) {
+  const { mailboxId } = useParams();
 
- // PSEUDOCODE: Extract mailboxId from URL (e.g., /mailboxes/3 gives mailboxId = "3") 
-
- const { mailboxId } = useParams();
-
-
-
-// Find mailbox where _id matches URL parameter (convert string to number)
-const selectedBox = mailboxes.find(
-  (mailbox) => mailbox._id === Number(mailboxId)
-);
+  // Find mailbox where _id matches URL parameter (convert string to number)
+  const selectedBox = mailboxes.find(
+    (mailbox) => mailbox._id === Number(mailboxId)
+  );
   
 return (
   <main className="hologram">
