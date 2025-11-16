@@ -1,6 +1,6 @@
 .effects-toggle {
   position: fixed;
-  top: 12px;
+  bottom: 12px;
   right: 12px;
   z-index: 1000;
 }
@@ -8,18 +8,18 @@
 .toggle-button {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   background: rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(5px);
   color: white;
-  padding: 4px 12px; /* Thin look */
-  border-radius: 20px;
+  padding: 3px 8px; /* Reduced from 4px 12px */
+  border-radius: 16px; /* Reduced from 20px */
   cursor: pointer;
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.5px; /* Better text spacing */
-  line-height: 1; /* Tight line height */
+  font-size: 0.5rem; /* Reduced from 0.6rem */
+  letter-spacing: 0.5px;
+  line-height: 1;
   transition: all 0.3s ease;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 1001;
@@ -68,8 +68,8 @@ body.standard-mode .toggle-button.disabled {
 }
 
 .toggle-icon-svg {
-  width: 14px;
-  height: 14px;
+  width: 12px; /* Reduced from 14px */
+  height: 12px; /* Reduced from 14px */
   transition: all 0.3s ease;
 }
 

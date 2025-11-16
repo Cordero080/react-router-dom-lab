@@ -30,13 +30,15 @@ const App = () => {
     <BrowserRouter>
       <DarkTechnoEffects />
       <EffectsToggle />
-      <NavBar/>
-      <Routes>
-        <Route path="/" element={<Home />} />
+      <div className="app-scale">
+        <NavBar/>
+        <Routes>
+          <Route path="/" element={<Home />} />
         <Route path="/new-mailbox" element={<MailboxForm addBox={addBox}/>} />
         <Route path="/mailboxes" element={<MailboxList mailboxes={mailboxes}/>} />
         <Route path="/mailboxes/:mailboxId" element={<MailboxDetails mailboxes={mailboxes}/>} />
       </Routes>
+      </div>
     </BrowserRouter>
   );
 }

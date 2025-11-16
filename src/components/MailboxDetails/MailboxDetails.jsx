@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import NavBar from '../Navbar/NavBar';
 import './MailboxDetails.css';
 import '../Effects/AdvancedEffects.css';
 import ScrambleButton from '../ScrambleButton/ScrambleButton';
@@ -11,13 +12,16 @@ export default function MailboxDetails({mailboxes}) {
     (mailbox) => mailbox._id === Number(mailboxId)
   );
   
-return (
-  <main className="hologram">
-    <Link to="/mailboxes" className="back-link electric-border">
+  return (
+    <div className="mailbox-details-scale">
+      {/* NavBar Section */}
+      <NavBar />
+      <main className="hologram">
+        <Link to="/mailboxes" className="back-link electric-border">
       <span className="back-icon">⬅</span> Return to Mailboxes
     </Link>
     
-    <h2 className="glitch-text">Mailbox Quantum Profile</h2>
+    <h2 className="glitch-text">Quantum Mailboxes</h2>
 
     {/* Enhanced error/details display with advanced effects */}
     {!selectedBox ? (
@@ -57,6 +61,7 @@ return (
         </div>
       </div>
     )}
-  </main>
-);
+      </main>
+    </div>
+  );
 }

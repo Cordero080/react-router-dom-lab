@@ -2,17 +2,37 @@
    FUTURISTIC POST OFFICE - DESIGN SYSTEM
    ============================================ */
 
+/* App Scaling Container */
+.app-scale {
+  transform: scale(0.6);
+  transform-origin: top center;
+  width: 100%;
+}
+
+.app-scale > nav,
+.app-scale > main {
+  width: 166.67%; /* 100 / 0.6 */
+  max-width: 166.67%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%) !important;
+  transition: none !important; /* Disable all transitions to prevent lag */
+  will-change: auto;
+}
+
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&display=swap');
 
 /* Import Future Z Font */
-@font-face {
+/* @font-face {
   font-family: 'Future Z';
   src: url('/fonts/Future Z.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-}
+} */
 
 /* Custom Properties - Neon Cyberpunk Theme */
 :root {
@@ -104,11 +124,13 @@ body::after {
 
 /* Root Container */
 #root {
-  max-width: 1400px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 2rem;
   position: relative;
   z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* ============================================
@@ -118,7 +140,7 @@ main {
   background: var(--bg-card);
   backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid var(--glass-border);
-  border-radius: 24px;
+  border-radius: 20px;
   padding: 3rem;
   box-shadow: var(--shadow-neon),
               inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -176,25 +198,36 @@ h1, h2 {
 }
 
 h1 {
-  font-family: 'Future Z', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Orbitron', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 2.5rem;
   letter-spacing: 2px;
   position: relative;
   overflow: hidden;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+h2 {
+  font-family: 'Orbitron', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Typewriter Effect */
 h1.typewriter {
-  border-right: 3px solid var(--primary-glow);
   white-space: nowrap;
-  animation: 
-    typing 2s steps(40, end),
-    blink-caret 0.75s step-end infinite;
+  overflow: hidden;
+  margin: 0 auto;
+  animation: typing 2s steps(40, end);
+  max-width: fit-content;
 }
 
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  from { 
+    max-width: 0;
+  }
+  to { 
+    max-width: 100%;
+  }
 }
 
 @keyframes blink-caret {
@@ -217,6 +250,30 @@ h1.typewriter {
    RESPONSIVE DESIGN - Enhanced Mobile Experience
    ============================================ */
 
+/* Extra large screens */
+@media (min-width: 1440px) {
+  #root {
+    max-width: 1400px;
+    padding: 3rem;
+  }
+  
+  h1 {
+    font-size: 3rem;
+  }
+  
+  main {
+    padding: 3.5rem;
+  }
+}
+
+/* Large screens / Laptops */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  #root {
+    max-width: 1100px;
+    padding: 2.5rem;
+  }
+}
+
 /* Tablet and small desktop */
 @media (max-width: 1024px) {
   #root {
@@ -226,6 +283,10 @@ h1.typewriter {
   
   h1 {
     font-size: 2.2rem;
+  }
+  
+  main {
+    padding: 2.5rem 2rem;
   }
 }
 
@@ -242,9 +303,19 @@ h1.typewriter {
   }
   
   h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     letter-spacing: 1px;
     text-align: center;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  main::before,
+  main::after {
+    width: 60px;
+    height: 60px;
   }
 }
 
@@ -255,11 +326,23 @@ h1.typewriter {
   }
   
   h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+  }
+  
+  h2 {
+    font-size: 1.3rem;
   }
   
   main {
     padding: 1.5rem 1rem;
+    border-radius: 12px;
+  }
+  
+  main::before,
+  main::after {
+    width: 40px;
+    height: 40px;
   }
   
   /* Reduce scanlines on mobile for better performance */
@@ -268,15 +351,18 @@ h1.typewriter {
   }
 }
 
-/* Large screens - enhance the experience */
-@media (min-width: 1440px) {
+/* Very small mobile devices */
+@media (max-width: 375px) {
   #root {
-    max-width: 1600px;
-    padding: 3rem;
+    padding: 0.25rem;
   }
   
   h1 {
-    font-size: 3.5rem;
+    font-size: 1.3rem;
+  }
+  
+  main {
+    padding: 1.25rem 0.75rem;
   }
 }
 
@@ -287,6 +373,7 @@ h1.typewriter {
 /* Smooth scroll behavior */
 * {
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 /* Enhanced fade in animation */

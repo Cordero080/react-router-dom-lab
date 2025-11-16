@@ -15,7 +15,7 @@ export default function Home() {
   
   return (
     <main className="hologram">
-      <h1 className="typewriter">Quantum Post Office</h1>
+      <h1 className="typewriter">QUANTUM POST OFFICE</h1>
       <div className="hero-content">
         <p className="hero-text terminal-text">Welcome to the future of mail delivery</p>
         <div className="hero-buttons">

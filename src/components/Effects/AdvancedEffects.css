@@ -189,8 +189,7 @@
   overflow: hidden;
   white-space: nowrap;
   display: inline-block;
-  border-right: 0.15em solid var(--primary-glow);
-  animation: typing 2s steps(30) 1s 1 normal both, caret 1s step-end infinite;
+  animation: typing 2s steps(30) 1s 1 normal both;
 }
 
 @keyframes caret {

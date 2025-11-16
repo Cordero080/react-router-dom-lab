@@ -1,3 +1,37 @@
+/* Title styles */
+h2.glitch-text {
+  font-family: 'Orbitron', sans-serif !important;
+  text-align: center;
+}
+/* === Scale all contents for MailboxDetails page === */
+.mailbox-details-scale {
+  transform: scale(0.6);
+  transform-origin: top center;
+  width: 166.67%; /* 100 / 0.6 */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 1024px) {
+  .mailbox-details-scale {
+    transform: scale(0.75);
+    width: 133.33%; /* 100 / 0.75 */
+  }
+}
+
+@media (max-width: 768px) {
+  .mailbox-details-scale {
+    transform: scale(0.85);
+    width: 117.65%; /* 100 / 0.85 */
+  }
+}
+
+@media (max-width: 480px) {
+  .mailbox-details-scale {
+    transform: scale(1);
+    width: 100%;
+  }
+}
 /* ============================================
    DETAILS PAGE STYLES
    ============================================ */
@@ -8,12 +42,12 @@ main ul {
 }
 
 main li {
-  padding: 1.5rem;
-  margin-bottom: 1rem;
+  padding: 0.9rem;
+  margin-bottom: 0.6rem;
   background: rgba(0, 245, 255, 0.03);
   border-left: 4px solid var(--primary-glow);
-  border-radius: 0 12px 12px 0;
-  font-size: 1.1rem;
+  border-radius: 0 7px 7px 0;
+  font-size: 0.66rem;
   transition: all 0.3s;
   position: relative;
   overflow: hidden;
@@ -49,11 +83,11 @@ main li strong {
 .back-link {
   display: inline-flex;
   align-items: center;
-  margin-bottom: 2rem;
-  padding: 0.75rem 1.5rem;
-  background: rgba(0, 245, 255, 0.1);
-  border: 1px solid var(--primary-glow);
-  border-radius: 50px;
+    margin-bottom: 1.2rem;
+    padding: 0.45rem 0.9rem;
+    background: rgba(0, 245, 255, 0.1);
+    border: 1px solid var(--primary-glow);
+    border-radius: 30px;
   color: var(--primary-glow);
   text-decoration: none;
   font-weight: 600;
@@ -84,10 +118,10 @@ main li strong {
 /* Details container */
 .details-container {
   background: rgba(15, 23, 42, 0.5);
-  border-radius: 16px;
-  padding: 2rem;
+  border-radius: 10px;
+  padding: 1.2rem;
   border: 1px solid var(--glass-border);
-  margin-top: 2rem;
+  margin-top: 1.2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   transition: all 0.5s ease;
 }
@@ -103,14 +137,14 @@ main li strong {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 1.5rem;
-  margin-bottom: 2rem;
+  padding-bottom: 0.9rem;
+  margin-bottom: 1.2rem;
   border-bottom: 1px solid rgba(0, 245, 255, 0.2);
 }
 
 .box-number {
-  font-family: 'Future Z', 'Orbitron', sans-serif;
-  font-size: 3rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
   color: var(--primary-glow);
   text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
   position: relative;
@@ -119,9 +153,9 @@ main li strong {
 .box-status {
   background: rgba(57, 255, 20, 0.2);
   color: var(--accent-glow);
-  padding: 0.5rem 1rem;
-  border-radius: 30px;
-  font-size: 0.8rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 18px;
+  font-size: 0.48rem;
   font-weight: 600;
   border: 1px solid var(--accent-glow);
   text-transform: uppercase;
@@ -129,33 +163,33 @@ main li strong {
 
 /* Error styling */
 .error-container {
-  margin-top: 2rem;
-  padding: 2rem;
+  margin-top: 1.2rem;
+  padding: 1.2rem;
   background: rgba(255, 0, 255, 0.1);
   border: 1px solid var(--secondary-glow);
-  border-radius: 10px;
+  border-radius: 6px;
   text-align: center;
 }
 
 .error-suggestion {
-  margin-top: 1rem;
+  margin-top: 0.6rem;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
+  font-size: 0.54rem;
 }
 
 /* Action buttons */
 .action-row {
   display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
   justify-content: flex-start;
 }
 
 .detail-action {
-  padding: 0.8rem 1.5rem;
-  border-radius: 50px;
+  padding: 0.48rem 0.9rem;
+  border-radius: 30px;
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.54rem;
   font-weight: 600;
   border: none;
   cursor: pointer;
@@ -179,18 +213,61 @@ main li strong {
 }
 
 /* Responsive design */
+@media (max-width: 1024px) {
+  main ul {
+    margin: 1.5rem 0;
+  }
+  
+  .box-number {
+    font-size: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
+  h2.glitch-text {
+    font-size: 1.5rem;
+  }
+  
   .details-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 0.6rem;
   }
   
   .action-row {
     flex-direction: column;
+    width: 100%;
   }
   
   .detail-action {
     width: 100%;
+  }
+  
+  .back-link {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  main ul {
+    margin: 1rem 0;
+  }
+  
+  main li {
+    font-size: 0.8rem;
+    padding: 0.75rem;
+  }
+  
+  .details-container {
+    padding: 1rem;
+  }
+  
+  .box-number {
+    font-size: 1.2rem;
+  }
+  
+  .box-status {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
   }
 }

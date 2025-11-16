@@ -43,12 +43,12 @@ nav::before {
 
 nav a {
   flex: 1;
-  padding: 1rem 2rem;
+  padding: .7rem 2rem;
   text-decoration: none;
   color: var(--text-primary);
   font-family: 'Orbitron', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.90rem;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   position: relative;
